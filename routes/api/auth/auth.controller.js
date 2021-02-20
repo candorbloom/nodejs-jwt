@@ -61,3 +61,22 @@ exports.register = (req, res) => {
     .then(respond)
     .catch(onError)
 }
+
+
+
+
+/*
+    POST /api/auth/login
+    {
+        username,
+        password
+    }
+*/
+const jwt = require('jsonwebtoken')
+const User = require('../../../models/user')
+
+
+
+exports.login = (req, res) => {
+    res.send('login api is working')
+}
