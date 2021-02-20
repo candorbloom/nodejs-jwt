@@ -13,17 +13,18 @@ exports.register = (req, res) => {
 
     const {username,password} = req.body
     let newUser = null
-    
+
     // 기존에 없는 유저면 새 유저로 생성하기
     const create = (user) => {
         if(user) {
             throw new Error('username exists')
         } else {
-            return User.create(username,password)
+            return User.create(username, password)
         }
     }
 
-    const count = (user)=>{
+    // 유저의 숫자를 세어라
+    const count = (user) => {
         newUser = user
         return User.count({}).exec()
     }
@@ -40,8 +41,8 @@ exports.register = (req, res) => {
     // 사용자에게 응답하라
     const respond = (isAdmin) => {
         res.json({
-            message : 'registered successfully',
-            admin : isAdmin ?  true : false
+            message: 'registered successfully',
+            admin: isAdmin ? true : false
         })
     }
 
@@ -51,11 +52,12 @@ exports.register = (req, res) => {
             message: error.message
         })
     }
+
     // 유저 중복 체크
-    user.findOneByUsername(username)
+    User.findOneByUsername(username)
     .then(create)
     .then(count)
     .then(assign)
     .then(respond)
-    .then(onError)
+    .catch(onError)
 }
