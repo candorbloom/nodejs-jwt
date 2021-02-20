@@ -24,6 +24,11 @@ exports.register = (req, res) => {
         }
     }
 
+    const count = (user)=>{
+        newUser = user
+        return User.count({}).exec()
+    }
+
     // count가 1이면 admin으로 배정하라
     const assign = (count) => {
         if(count===1){

@@ -20,7 +20,7 @@ User.statics.create = function(username,password){
 
 // username으로 유저 찾기
 User.statics.findOneByUsername = function(username){
-    return this.fidOne({
+    return this.findOne({
         username
     }).exec()
 }
