@@ -10,7 +10,6 @@ const user = require('../../../models/user')
 const User = require('../../../models/user')
 
 exports.register = (req, res) => {
-    res.send('this router is working')
 
     const {username,password} = req.body
     let newUser = null
