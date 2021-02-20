@@ -24,7 +24,8 @@ app.get('/', (req, res) => {
 })
 
 // api router 설정
-app.use('/api',require('./routes/api'))
+
+app.use('/api', require('./routes/api'))
 
 // 서버 open
 app.listen(port, ()=> {
